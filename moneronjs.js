@@ -72,7 +72,7 @@ function Wallet(ip,port){
 	self.getaddress = function (callback){
 		rpc(self.opt.ip, self.opt.port, "getaddress",'', function(error,result){
                     if (error){
-	         	    console.log("error in getting address"+error);
+	         	    console.log("error in getting address: %j", [error]);
                             return;
 		   } else { //console.log(result)
 		   	var address = result.address;
@@ -85,7 +85,7 @@ function Wallet(ip,port){
 	self.getbalance = function(callback){
                 rpc(self.opt.ip, self.opt.port, "getbalance",'', function(error,result){
                     if (error){
-                            console.log("error in getting balance"+error);
+                            console.log("error in getting balance: %j", [error]);
                             return;
 		    } else {//console.log(result)
 			    var unlocked = result.unlocked_balance;
@@ -97,13 +97,24 @@ function Wallet(ip,port){
 	self.getpayment= function(pid, callback){
 		rpc(self.opt.ip, self.opt.port, "get_payments", { "payment_id" : pid }, function(error,result){
 		     if (error){
-		             console.log("error in getting payment"+error);
+		             console.log("error in getting payment: %j",[error]);
 		             return;
 		     } else {//console.log(result)
 			     callback(result);
 		     }
 		});
 	}
+        self.incoming_transfers= function(type,callback){
+                rpc(self.opt.ip, self.opt.port, "incoming_transfers", { "transfer_type" : type }, function(error,result){
+                     if (error){
+                             console.log("error in getting incoming_transfers: %j", [ error]);
+                             return;
+                     } else {
+                             callback(result);
+                     }
+                });
+        }
+
 }
 
 

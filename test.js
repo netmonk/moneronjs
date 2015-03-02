@@ -1,8 +1,10 @@
 var wallet = require('./moneronjs.js');
 
 console.log("this is a wallet rpc interface test");
-var wal =  new wallet.Wallet("127.0.0.1","10500");
+var wal =  new wallet.Wallet("127.0.0.1","8082");
 console.log(wal.opt);
+
+
 wal.getaddress(function(address){
           console.log("lets try to get the address of the wallet");
           console.log(address);
@@ -22,4 +24,15 @@ wal.getpayment("0000000000000000000000000000000000000000000000000000000000000000
           console.log("let's try to get payment by id : 0000000000000000000000000000000000000000000000000000000000000000");
           console.log(result);
 });
+
+wal.incoming_transfers("available",function(result){
+        console.log("Listing of TX UnSpend");
+        console.log(result);
+});
+wal.incoming_transfers("unavailable",function(result){
+        console.log("Listing of TX Spend");
+        console.log(result);
+});
+
+
 
