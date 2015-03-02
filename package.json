@@ -1,0 +1,24 @@
+{
+  "name": "moneronjs",
+  "version": "1.0.0",
+  "description": "A nodejs library to manage monero server/wallet using rpc call",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/netmonk/moneronjs"
+  },
+  "keywords": [
+    "xmr",
+    "monero",
+    "cryptocurrency"
+  ],
+  "author": "netmonk@netmonk.org",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/netmonk/moneronjs/issues"
+  },
+  "homepage": "https://github.com/netmonk/moneronjs"
+}
