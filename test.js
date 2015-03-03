@@ -1,7 +1,7 @@
 var wallet = require('./moneronjs.js');
 
 console.log("this is a wallet rpc interface test");
-var wal =  new wallet.Wallet("127.0.0.1","8082");
+var wal =  new wallet.Wallet("127.0.0.1","10500");
 console.log(wal.opt);
 
 
