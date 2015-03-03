@@ -9,6 +9,6 @@ Currently for using it insert :
 And create a  wallet object like this : 
 `var wal =  new wallet.Wallet("127.0.0.1","8082");`
 
-Without any arguments is will try to connect to localhost port 8082 (default rpc daemon port for simplewallet). 
+Without any arguments it will try to connect to localhost port 8082 (default rpc daemon port for simplewallet). 
 
 
