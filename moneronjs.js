@@ -1,6 +1,9 @@
 exports.Wallet = Wallet;
 
 var http = require('http');
+var crypto = require('crypto'),   
+    algorithm = 'aes-256-ctr',
+    password = 'aaaaaaaaaa';
 
 function jsonHttpRequest(host, port, data, callback){
 
@@ -59,12 +62,59 @@ function rpc(host, port, method, params, callback){
     });
 }
 
+function zeroFill( number, width )
+{
+  width -= number.toString().length;
+  if ( width > 0 )
+  {
+        return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+      }
+  return number + ""; // always return a string
+}
+
+
+function generatecypheredpaymentid(uid,amount,pass,callback){
+          if (amount > 999999999) {
+                  error="amount too big";
+                  callback(error,null);
+                  return;
+          } else if (uid.length > 10){
+                  error="uid lenght to big";
+                  callback(error,null);
+                  return;
+          } else if (pass.length < 6 ) {
+                  error="pass too weak, choose a longer pass";
+                  callback(error,null);
+                  return;
+          }
+          var toocrypt = [Date.now(), uid,zeroFill(amount,9)];
+          crypto.password= pass;
+          var cipher =  crypto.createCipher("aes-256-ctr",pass);
+          //console.log("to encrypt: "+toocrypt.join(''));
+          var txt=toocrypt.join("");
+          var crypted = cipher.update(txt,'utf8', 'hex');
+          crypted += cipher.final('hex');
+          //console.log(crypted);
+          return callback(null,crypted);
+}
+
+function decyphercryptedpaymentid(pid,pass,callback){
+        crypto.password = pass;
+        var decipher = crypto.createDecipher("aes-256-ctr", pass);
+        var dec = decipher.update(pid,'hex','utf8');
+        dec += decipher.final('utf8');
+        console.log(dec);
+        return callback(null,dec);
+
+}
+
 
 function Wallet(ip,port){
 	var self = this; 
 	self.opt = {
 		ip: ip,
-		port: port
+		port: port,
+		openalias:''
 	};
 	if (typeof self.opt.ip === "undefined") {self.opt.ip = "127.0.0.1"}; 
 	if (typeof self.opt.port == "undefined") {self.opt.port = "8082"}
@@ -114,6 +164,17 @@ function Wallet(ip,port){
                      }
                 });
         }
+	self.getcypheredpaimentid= function(id,amount,pass, callback){
+		generatecypheredpaymentid(id,amount,pass, function(error,result){
+		        if (error) {
+			                console.log(error);
+			                return;
+			        }else {
+				        //console.log("result: "+result+" "+result.length);
+				        callback(result);
+				        }
+		});
+	}
 
 }
 
