@@ -1,5 +1,6 @@
 exports.Wallet = Wallet;
 
+var assert = require('assert');
 var http = require('http');
 var crypto = require('crypto'),   
     algorithm = 'aes-256-ctr',
@@ -74,6 +75,9 @@ function zeroFill( number, width )
 
 
 function generatecypheredpaymentid(uid,amount,pass,callback){
+	  assert.equal(typeof(amount),'number', "argument amount must be a number");
+	  assert.ok(!isNaN(amount) && amount >0 && amount < 1000000000, "argument amount must be integer between 0 and 999999999");
+
           if (amount > 999999999) {
                   error="amount too big";
                   callback(error,null);
@@ -174,6 +178,10 @@ function Wallet(ip,port){
 				        callback(result);
 				        }
 		});
+	}
+	self.getrandompaymentid= function(callback){
+		var buf = crypto.randomBytes(32);
+		return callback(buf.toString('hex'));
 	}
 
 }
