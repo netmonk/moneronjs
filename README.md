@@ -20,6 +20,6 @@ Currently available :
  
 *  getaddress(callback): give back the address of the wallet
 *  getbalance(callback): give the current **unlocked** balance of wallet
-*  getpayment(payment-id, callback): return the whole transactions associated to the provided payment_id
+*  getpaymentfromid(payment-id, callback): return the whole transactions associated to the provided payment_id
 *  incoming_transfers(status): provide the list of tx available(unSpend) Unavailable(spent) and All
-*  getcypheredpaimentid(Uid,amount, password): return a valid payment_id (64char hex string) which is the encrypted using AES-256-CTR of the string "unix_timestampuidamount" (uid is a 10 digit number and amount is a 9 digit number)
+*  getcypheredpaymentid(Uid,amount, password): return a valid payment_id (64char hex string) which is the encrypted using AES-256-CTR of the string "unix_timestampuidamount" (uid is a 10 digit number and amount is a 9 digit number)

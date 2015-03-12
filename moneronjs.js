@@ -144,7 +144,7 @@ function Wallet(ip,port){
 		    }
 		});     
 	}
-	self.getpayment= function(pid, callback){
+	self.getpaymentfromid= function(pid, callback){
 		rpc(self.opt.ip, self.opt.port, "get_payments", { "payment_id" : pid }, function(error,result){
 		     if (error){
 		             console.log("error in getting payment: %j",[error]);
@@ -164,7 +164,7 @@ function Wallet(ip,port){
                      }
                 });
         }
-	self.getcypheredpaimentid= function(id,amount,pass, callback){
+	self.getcypheredpaymentid= function(id,amount,pass, callback){
 		generatecypheredpaymentid(id,amount,pass, function(error,result){
 		        if (error) {
 			                console.log(error);

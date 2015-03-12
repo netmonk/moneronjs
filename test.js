@@ -17,14 +17,14 @@ wal.getbalance(function(bal,ulock){
         console.log("unlocked balance: "+ ulock);
 	console.log("==========================================================================");
 });
-wal.getpayment("d9ed4ef9e7d80f71f90d419152720177db3df9975f52a50f0172276224214b1b",function(result){
+wal.getpaymentfromid("d9ed4ef9e7d80f71f90d419152720177db3df9975f52a50f0172276224214b1b",function(result){
         console.log("let's try to get payment by id : d9ed4ef9e7d80f71f90d419152720177db3df9975f52a50f0172276224214b1b");
         console.log(result);
 	console.log("==========================================================================");
 });
   
   
-wal.getpayment("0000000000000000000000000000000000000000000000000000000000000000",function(result){
+wal.getpaymentfromid("0000000000000000000000000000000000000000000000000000000000000000",function(result){
           console.log("let's try to get payment by id : 0000000000000000000000000000000000000000000000000000000000000000");
           console.log(result);
 	  console.log("==========================================================================");
@@ -41,7 +41,7 @@ wal.incoming_transfers("unavailable",function(result){
 	console.log("==========================================================================");
 });
 
-wal.getcypheredpaimentid('0004567890',230999909,'tototi', function(result){
+wal.getcypheredpaymentid('0004567890',230999909,'tototi', function(result){
 	console.log("==========================================================================");
 	console.log("let's try to get a cyphered payment_id with value 0004567890,230999909,tototi");
 	console.log(result);
