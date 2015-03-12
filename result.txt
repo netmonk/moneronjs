@@ -3,17 +3,17 @@ this is a wallet rpc interface test
 { ip: '127.0.0.1', port: '8082', openalias: '' }
 ==========================================================================
 let's try to get a cyphered payment_id with value 0004567890,230999909,tototi
-0daf93d7aa034f56b0eefaa90ccce862da97e31ec9ab9bf6e48e3d9d3f9a0cea
+0daf93d7aa034c5eb3edf8a407cce862da97e31ec9ab9bf6e48e3d9d3f9a0cea
+14261750172430004567890230999909
+==========================================================================
+let's try to decypher payment_id 0daf93d7aa034f56b0eefaa90ccce862da97e31ec9ab9bf6e48e3d9d3f9a0cea with password tototi
+14261750172430004567890230999909
 ==========================================================================
 let's try to get a random payment_id
-result:  f9b56358619beeee16216ae6df288ff7c7432742ccbc7321747ba93a85c927bd
+result:  15e5d2659a6849996e9e1b90a1be987d9ec2b55060ead52e4a62e06d64c14f4e
 ==========================================================================
 lets try to get the address of the wallet
 9ymfWxswcc124mmQxhDZMcHhuK1dE4V5U9R4SGqtGh8PJFbYnzh49XDNvs66KzkGL3XRF4nUGi1QM3upi8FL9wCoQnWuvxS
-==========================================================================
-lets try to get balance of the wallet
-total balance: 20989989259259260
-unlocked balance: 20989989259259260
 ==========================================================================
 let's try to get payment by id : 0000000000000000000000000000000000000000000000000000000000000000
 { payments: 
@@ -855,6 +855,10 @@ Listing of TX UnSpend
        spent: false,
        tx_hash: '<34166560ab1f136e74c2e51f565984cb54c445abb6d5d2e9e13209dbda3a3d08>',
        tx_size: 523 } ] }
+==========================================================================
+lets try to get balance of the wallet
+total balance: 20989989259259260
+unlocked balance: 20989989259259260
 ==========================================================================
 let's try to get payment by id : d9ed4ef9e7d80f71f90d419152720177db3df9975f52a50f0172276224214b1b
 { payments: 

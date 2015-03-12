@@ -179,6 +179,16 @@ function Wallet(ip,port){
 				        }
 		});
 	}
+	self.decypherpaymentid= function(pid,pass, callback){
+		decyphercryptedpaymentid(pid,pass,function(error,result){
+			if(error ) {
+			callback(error);
+			} else {
+			callback(result);
+			}
+		});
+
+	}
 	self.getrandompaymentid= function(callback){
 		var buf = crypto.randomBytes(32);
 		return callback(buf.toString('hex'));

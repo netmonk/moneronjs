@@ -44,6 +44,11 @@ wal.getcypheredpaymentid('0004567890',230999909,'tototi', function(result){
 	console.log("let's try to get a cyphered payment_id with value 0004567890,230999909,tototi");
 	console.log(result);
 });
+wal.decypherpaymentid('0daf93d7aa034f56b0eefaa90ccce862da97e31ec9ab9bf6e48e3d9d3f9a0cea','tototi', function(result){
+	console.log("==========================================================================");
+	console.log("let's try to decypher payment_id 0daf93d7aa034f56b0eefaa90ccce862da97e31ec9ab9bf6e48e3d9d3f9a0cea with password tototi");
+	console.log(result);
+});
 wal.getrandompaymentid(function(result){
 	console.log("==========================================================================");
 	console.log("let's try to get a random payment_id");
